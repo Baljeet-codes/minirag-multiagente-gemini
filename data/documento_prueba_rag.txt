@@ -1,0 +1,11 @@
+--- Concepto Central del RAG ---
+El proyecto Mini RAG Multiagente integra varias etapas de procesamiento de datos. La primera etapa es la ingesta de documentos, que puede manejar formatos como PDF, TXT, MD y JPG. Esta capacidad de ingesta es crucial porque define la base de conocimiento. Usamos una ventana de 500 caracteres con un solapamiento de 100 para segmentar el texto, garantizando que ninguna idea quede cortada.
+
+--- Detalle Técnico 1: Embeddings y Vectorización ---
+Para la vectorización, el sistema utiliza el modelo de embeddings de Gemini (models/embedding-001) para transformar el texto en vectores numéricos de alta dimensión. Estos vectores son normalizados para asegurar que la similitud se mida eficazmente mediante el Producto Interno (coseno). El índice se almacena usando FAISS, específicamente IndexFlatIP. Es esencial que este índice sea consultado correctamente para obtener los k resultados.
+
+--- Detalle Técnico 2: Los Agentes Clave ---
+La arquitectura se compone de tres agentes clave con roles definidos. El Agente de Extracción maneja la lectura, el chunking y la construcción del índice. El Agente de Análisis se encarga de recibir la pregunta, buscar en FAISS y recuperar los fragmentos de contexto. Finalmente, el Agente de Respuesta sintetiza el contexto recuperado, utilizando Gemini-1.5-Flash si se activa el modo LLM, para generar una respuesta en lenguaje natural.
+
+--- Dato Extra y Flujo ---
+Una característica de este proyecto es su velocidad, lograda gracias al eficiente índice FAISS. El flujo garantiza que la respuesta se base exclusivamente en el contexto recuperado, evitando alucinaciones. La clave de API se maneja a través de la variable de entorno GEMINI_API_KEY.

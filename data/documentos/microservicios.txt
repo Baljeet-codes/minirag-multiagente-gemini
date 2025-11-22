@@ -1,0 +1,7 @@
+📄 Documento de Prueba: Microservicios y Patrones de Despliegue
+Título: El Rol de los Microservicios en la Arquitectura Moderna
+--- Definición y Ventajas --- Los microservicios son un enfoque arquitectónico donde una aplicación se construye como una colección de pequeños servicios, independientes y débilmente acoplados. El principal beneficio de esta arquitectura es la escalabilidad horizontal y la independencia tecnológica, permitiendo a los equipos elegir las mejores herramientas para cada tarea. Este estilo contrasta con la arquitectura monolítica.
+
+--- Componentes Clave --- Cada microservicio gestiona su propia base de datos, lo que evita puntos únicos de fallo y acelera los ciclos de desarrollo. Los microservicios se comunican principalmente a través de APIs ligeras, siendo REST y gRPC los protocolos más comunes. La orquestación y el despliegue de estos servicios a menudo se gestiona mediante contenedores como Docker y plataformas como Kubernetes.
+
+--- Patrones de Despliegue --- Un patrón común para el despliegue sin interrupción es el Despliegue Azul/Verde (Blue/Green Deployment). Este patrón implica mantener dos entornos idénticos (Azul y Verde), donde uno recibe tráfico y el otro se usa para la actualización. También se utiliza el patrón Canary Release para exponer las nuevas funcionalidades solo a un pequeño subconjunto de usuarios antes del despliegue completo.
